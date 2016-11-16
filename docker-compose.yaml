@@ -1,0 +1,13 @@
+version: '2'
+services:
+  api:
+    build: .
+    ports:
+      - 3000:3000
+    links:
+      - database
+    environment:
+      - DB_NAME=mongogo
+  database:
+    image: mongo:3.0
+    command: mongod --smallfiles --quiet --logpath=/dev/null
